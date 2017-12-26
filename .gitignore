@@ -28,3 +28,4 @@ tests/local.properties
 *.iml
 build
 /gradle.properties
+/app/google-services.json
