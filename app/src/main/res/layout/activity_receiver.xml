@@ -7,23 +7,44 @@
     tools:context="org.ppsonj.naughtymeter.ReceiverActivity"
     android:background="@color/background">
 
-    <com.github.anastr.speedviewlib.DeluxeSpeedView
-        android:id="@+id/speedView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:sv_lowSpeedColor="@color/startGauge"
-        app:sv_highSpeedColor="@color/endGauge"
-        app:sv_mediumSpeedColor="@color/mediumGauge"
-        app:sv_withTremble="true"
-        app:sv_trembleDegree="4"
-        app:sv_trembleDuration="100"
-        app:sv_backgroundCircleColor="@color/background"
-        app:sv_speedTextColor="@color/background"
-        app:sv_speedBackgroundColor="@color/background"
-        app:sv_unitTextColor="@color/background"
-        app:sv_indicator="KiteIndicator"
-        app:sv_minSpeed="0"
-        app:sv_maxSpeed="100"
-        app:sv_withEffects="true"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.github.anastr.speedviewlib.DeluxeSpeedView
+            android:id="@+id/speedView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:sv_backgroundCircleColor="@color/background"
+            app:sv_highSpeedColor="@color/endGauge"
+            app:sv_indicator="KiteIndicator"
+            app:sv_lowSpeedColor="@color/startGauge"
+            app:sv_maxSpeed="100"
+            app:sv_mediumSpeedColor="@color/mediumGauge"
+            app:sv_minSpeed="0"
+            app:sv_speedBackgroundColor="@color/background"
+            app:sv_speedTextColor="@color/background"
+            app:sv_trembleDegree="4"
+            app:sv_trembleDuration="100"
+            app:sv_unitTextColor="@color/background"
+            app:sv_withEffects="true"
+            app:sv_withTremble="true" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/txtReceivingName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@android:color/background_light"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
