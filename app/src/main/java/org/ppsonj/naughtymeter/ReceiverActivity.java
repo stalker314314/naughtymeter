@@ -1,8 +1,13 @@
 package org.ppsonj.naughtymeter;
 
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import com.github.anastr.speedviewlib.Gauge;
@@ -28,10 +33,13 @@ public class ReceiverActivity extends AppCompatActivity {
 
     private KonfettiView konfettiView;
 
+    private View mContentView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receiver);
+        mContentView = findViewById(R.id.mainView);
         konfettiView = findViewById(R.id.viewKonfetti);
         mReceivingName = findViewById(R.id.txtReceivingName);
         mGauge = findViewById(R.id.speedView);
@@ -69,6 +77,8 @@ public class ReceiverActivity extends AppCompatActivity {
 
     private void doKonfetti(int speed) {
         if (speed == 100) {
+
+            // do konfetti
             konfettiView.build()
                     .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
                     .setDirection(0.0, 359.0)
@@ -79,6 +89,23 @@ public class ReceiverActivity extends AppCompatActivity {
                     .addSizes(new Size(12, 5f))
                     .setPosition(-50f, konfettiView.getWidth() + 50f, -50f, -50f)
                     .stream(300, 5000L);
+
+            // flash background
+            final AnimationDrawable drawable = new AnimationDrawable();
+            final Handler handler = new Handler();
+            drawable.addFrame(new ColorDrawable(Color.RED), 400);
+            drawable.addFrame(new ColorDrawable(Color.GREEN), 400);
+            drawable.setOneShot(false);
+            final Drawable background = mContentView.getBackground();
+            mContentView.setBackgroundDrawable(drawable);
+            drawable.start();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    drawable.stop();
+                    mContentView.setBackgroundDrawable(background);
+                }
+            }, 6000);
         }
     }
 }

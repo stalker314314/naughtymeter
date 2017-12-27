@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/mainView"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,11 +37,19 @@
                 app:sv_withEffects="true"
                 app:sv_withTremble="true" />
 
-            <org.ppsonj.naughtymeter.view.SmileView
-                android:id="@+id/smileView"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <org.ppsonj.naughtymeter.view.SmileView
+                    android:id="@+id/smileView"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp" />
+
+            </RelativeLayout>
 
             <Space
                 android:layout_width="match_parent"
