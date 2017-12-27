@@ -3,8 +3,9 @@ package org.ppsonj.naughtymeter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -13,19 +14,26 @@ public class SenderActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
 
-    private TextView mName;
+    private AutoCompleteTextView acName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sender);
-        mName = findViewById(R.id.txtName);
+
+        acName = findViewById(R.id.acName);
+        acName.setCompletionHint("kids name");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.select_dialog_singlechoice, getResources().getStringArray(R.array.kids));
+        acName.setAdapter(adapter);
+
         mDatabase = FirebaseDatabase.getInstance().getReference("streaming");
 
         findViewById(R.id.btnPushName).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDatabase.child("name").setValue(mName.getText().toString());
+                mDatabase.child("name").setValue(acName.getText().toString());
             }
         });
 

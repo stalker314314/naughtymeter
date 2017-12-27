@@ -9,8 +9,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <org.ppsonj.naughtymeter.view.InstantAutoComplete
+                android:id="@+id/acName"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:completionThreshold="0"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"/>
+
+            <Button
+                android:id="@+id/btnPushName"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="@string/push_name" />
+        </LinearLayout>
 
         <SeekBar
             android:id="@+id/seekBar"
@@ -23,24 +42,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="81dp" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/txtName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-            <Button
-                android:id="@+id/btnPushName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/push_name" />
-        </LinearLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

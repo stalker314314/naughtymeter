@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">ДОБРОМЕТАР</string>
     <string name="push_name">Push name</string>
+    <string-array name="kids">
+        <item>Jana</item>
+        <item>Teodora</item>
+        <item>Kaja</item>
+        <item>Marko</item>
+        <item>Maja</item>
+        <item>Petar</item>
+        <item>Nina</item>
+        <item>Pavle</item>
+        <item>Zoja</item>
+    </string-array>
 </resources>
