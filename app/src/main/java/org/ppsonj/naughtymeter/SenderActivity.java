@@ -13,26 +13,27 @@ public class SenderActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
 
+    private TextView mName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sender);
+        mName = findViewById(R.id.txtName);
         mDatabase = FirebaseDatabase.getInstance().getReference("streaming");
 
         findViewById(R.id.btnPushName).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TextView txtName = findViewById(R.id.txtName);
-                mDatabase.child("name").setValue(txtName.getText().toString());
+                mDatabase.child("name").setValue(mName.getText().toString());
             }
         });
 
-        ((SeekBar)findViewById(R.id.seekBar)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
-        {
+        SeekBar seekBar = findViewById(R.id.seekBar);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser)
-                {
+                if (fromUser) {
                     mDatabase.child("value").setValue(seekBar.getProgress());
                 }
             }
