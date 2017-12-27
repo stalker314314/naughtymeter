@@ -1,5 +1,6 @@
 package org.ppsonj.naughtymeter;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -13,6 +14,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.ppsonj.naughtymeter.view.SmileView;
 
+import nl.dionsegijn.konfetti.KonfettiView;
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
+
 public class ReceiverActivity extends AppCompatActivity {
 
     private Gauge mGauge;
@@ -21,10 +26,13 @@ public class ReceiverActivity extends AppCompatActivity {
 
     private SmileView mSmileView;
 
+    private KonfettiView konfettiView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receiver);
+        konfettiView = findViewById(R.id.viewKonfetti);
         mReceivingName = findViewById(R.id.txtReceivingName);
         mGauge = findViewById(R.id.speedView);
         mGauge.setSpeedAt(50);
@@ -48,7 +56,8 @@ public class ReceiverActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int speed = dataSnapshot.getValue(Integer.class);
                 mGauge.setSpeedAt(speed);
-                mSmileView.setVavlue(speed/10);
+                mSmileView.setVavlue(speed / 10);
+                doKonfetti(speed);
             }
 
             @Override
@@ -56,5 +65,20 @@ public class ReceiverActivity extends AppCompatActivity {
                 mGauge.setSpeedAt(50);
             }
         });
+    }
+
+    private void doKonfetti(int speed) {
+        if (speed == 100) {
+            konfettiView.build()
+                    .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+                    .setDirection(0.0, 359.0)
+                    .setSpeed(1f, 5f)
+                    .setFadeOutEnabled(true)
+                    .setTimeToLive(2000L)
+                    .addShapes(Shape.RECT, Shape.CIRCLE)
+                    .addSizes(new Size(12, 5f))
+                    .setPosition(-50f, konfettiView.getWidth() + 50f, -50f, -50f)
+                    .stream(300, 5000L);
+        }
     }
 }

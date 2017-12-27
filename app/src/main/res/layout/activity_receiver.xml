@@ -1,56 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="org.ppsonj.naughtymeter.ReceiverActivity"
-    android:background="@color/background">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/background"
+        tools:context="org.ppsonj.naughtymeter.ReceiverActivity">
 
-        <com.github.anastr.speedviewlib.DeluxeSpeedView
-            android:id="@+id/speedView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:sv_backgroundCircleColor="@color/background"
-            app:sv_highSpeedColor="@color/endGauge"
-            app:sv_indicator="KiteIndicator"
-            app:sv_lowSpeedColor="@color/startGauge"
-            app:sv_maxSpeed="100"
-            app:sv_mediumSpeedColor="@color/mediumGauge"
-            app:sv_minSpeed="0"
-            app:sv_speedBackgroundColor="@color/background"
-            app:sv_speedTextColor="@color/background"
-            app:sv_trembleDegree="4"
-            app:sv_trembleDuration="100"
-            app:sv_unitTextColor="@color/background"
-            app:sv_withEffects="true"
-            app:sv_withTremble="true" />
-
-        <org.ppsonj.naughtymeter.view.SmileView
-            android:layout_gravity="center"
-            android:id="@+id/smileView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <Space
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txtReceivingName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textColor="@android:color/background_light"
-            android:textSize="36sp"
-            android:textStyle="bold" />
+            <com.github.anastr.speedviewlib.DeluxeSpeedView
+                android:id="@+id/speedView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:sv_backgroundCircleColor="@color/background"
+                app:sv_highSpeedColor="@color/endGauge"
+                app:sv_indicator="KiteIndicator"
+                app:sv_lowSpeedColor="@color/startGauge"
+                app:sv_maxSpeed="100"
+                app:sv_mediumSpeedColor="@color/mediumGauge"
+                app:sv_minSpeed="0"
+                app:sv_speedBackgroundColor="@color/background"
+                app:sv_speedTextColor="@color/background"
+                app:sv_trembleDegree="4"
+                app:sv_trembleDuration="100"
+                app:sv_unitTextColor="@color/background"
+                app:sv_withEffects="true"
+                app:sv_withTremble="true" />
 
-    </LinearLayout>
+            <org.ppsonj.naughtymeter.view.SmileView
+                android:id="@+id/smileView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
 
-</android.support.constraint.ConstraintLayout>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/txtReceivingName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_light"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <nl.dionsegijn.konfetti.KonfettiView
+        android:id="@+id/viewKonfetti"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</FrameLayout>
