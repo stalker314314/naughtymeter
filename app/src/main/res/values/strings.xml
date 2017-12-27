@@ -2,14 +2,18 @@
     <string name="app_name">ДОБРОМЕТАР</string>
     <string name="push_name">Push name</string>
     <string-array name="kids">
-        <item>Jana</item>
-        <item>Teodora</item>
-        <item>Kaja</item>
-        <item>Marko</item>
-        <item>Maja</item>
-        <item>Petar</item>
-        <item>Nina</item>
-        <item>Pavle</item>
-        <item>Zoja</item>
+        <item>Јана</item>
+        <item>Теодора</item>
+        <item>Мата</item>
+        <item>Каја</item>
+        <item>Марко</item>
+        <item>Маја</item>
+        <item>Петар</item>
+        <item>Нина</item>
+        <item>Павле</item>
+        <item>Зоја</item>
+        <item>Васа</item>
+        <item>Дими</item>
+        <item>Гаврило</item>
     </string-array>
 </resources>
